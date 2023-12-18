@@ -1,0 +1,22 @@
+.numerador {
+width: 20%;
+aspect-ratio: 1/1;
+background-color: #603c8c;
+display: inline-flex;
+text-align: center;
+justify-content: center;
+align-items: center
+}
+
+.numerador:hover {
+    background-color: #885eba;
+}
+
+.numerador span {
+font-size: 2rem;
+font-weight: bold;
+}
+
+#territorio {
+    visibility: hidden;
+}
