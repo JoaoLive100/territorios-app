@@ -1,5 +1,17 @@
 window.addEventListener('DOMContentLoaded', event => {
 
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('../pwa/sw.js')
+            .then(registration => {
+                console.log('Service Worker registrado com sucesso!', registration.scope);
+            })
+            .catch(err => {
+                console.error('Erro ao registrar o Service Worker:', err);
+            });
+        });
+    }
+
     $(document).ready(function(){
         $.ajax({
             url: '../model/home.php',
@@ -70,10 +82,10 @@ window.addEventListener('DOMContentLoaded', event => {
                 if (data != "erro") {
                     data.forEach(element => {
                         const accordionBodyContent = `
-                            <div>
-                                <span>${element.numero_casa}</span>
-                                <button type="button" class="btn btn-outline-danger m-2"><i class="bi bi-trash3"></i></button>
-                            <div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span>${element.numero_casa}</span>
+                            <button type="button" class="btn btn-outline-danger m-2 ml-auto btn-excluir" value-index="${index}" value-id-territorio="${element.id_territorio}" value-id-territorio-rua="${element.id_territorio_rua}" value-id-territorio-rua-casa="${element.id_territorio_rua_casa}"><i class="bi bi-trash3"></i></button>
+                        </div>
                         `;
                         accordionBody.append(accordionBodyContent);
                     });
@@ -116,4 +128,27 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         });
     });
+
+    $("#accordionExample").on("click", ".btn-excluir", function () {
+        let index = $(this).attr('value-index');
+        let ruaID = $(this).attr('value-id-territorio-rua');
+        let territorioID = $(this).attr('value-id-territorio');
+        let numeroCasaID = $(this).attr('value-id-territorio-rua-casa');
+        $.ajax({
+            url: '../model/home.php',
+            type: 'POST',
+            data: {
+                'action': 'excluirCasa',
+                'territorioID': territorioID,
+                'ruaID': ruaID,
+                'numeroCasaID': numeroCasaID
+            },
+            success: function (data) {
+                if (data != "erro") {
+                    loadCasas(ruaID, index);
+                }
+            }
+        });
+    });
+
 });
