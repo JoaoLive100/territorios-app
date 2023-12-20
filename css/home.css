@@ -1,11 +1,11 @@
 .numerador {
-width: 20%;
-aspect-ratio: 1/1;
-background-color: #603c8c;
-display: inline-flex;
-text-align: center;
-justify-content: center;
-align-items: center
+    width: 20%;
+    aspect-ratio: 1/1;
+    background-color: #603c8c;
+    display: inline-flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center
 }
 
 .numerador:hover {

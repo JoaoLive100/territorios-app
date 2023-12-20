@@ -15,6 +15,10 @@
         registrarCasa($_POST['territorioID'], $_POST['ruaID'], $_POST['numeroCasa']);
     }
 
+    if(isset($_POST['action']) && $_POST['action'] == 'excluirCasa' && isset($_POST['territorioID']) && isset($_POST['ruaID']) && isset($_POST['numeroCasaID'])) {
+        excluirCasa($_POST['territorioID'], $_POST['ruaID'], $_POST['numeroCasaID']);
+    }
+
     function loadTerritorios() {
         include("../includes/connection.php");
 
@@ -94,6 +98,20 @@
         include("../includes/connection.php");
 
         $sql = "CALL sp_insert_territorio_rua_casa($territorioID, $ruaID, '$numeroCasa')";
+        $result = $connection->query($sql);
+
+        if ($result) {
+            echo 'sucesso';
+        } else {
+            // Handle database query error
+            echo 'erro';
+        }
+    }
+
+    function excluirCasa($territorioID, $ruaID, $numeroCasaID) {
+        include("../includes/connection.php");
+
+        $sql = "CALL sp_delete_territorio_rua_casa($territorioID, $ruaID, $numeroCasaID)";
         $result = $connection->query($sql);
 
         if ($result) {
