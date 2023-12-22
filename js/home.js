@@ -1,20 +1,8 @@
 window.addEventListener('DOMContentLoaded', event => {
 
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('../pwa/sw.js')
-            .then(registration => {
-                console.log('Service Worker registrado com sucesso!', registration.scope);
-            })
-            .catch(err => {
-                console.error('Erro ao registrar o Service Worker:', err);
-            });
-        });
-    }
-
     $(document).ready(function(){
         $.ajax({
-            url: '../model/home.php',
+            url: 'model/home.php',
             type: 'POST',
             data: {
                 'action': 'loadTerritorios'
@@ -34,7 +22,7 @@ window.addEventListener('DOMContentLoaded', event => {
         $("#territorio-title").text("Território: " + $(this).attr('numero') + " (" + $(this).attr('nome') + ")");
         let territorioID = $(this).attr('value');
         $.ajax({
-            url: '../model/home.php',
+            url: 'model/home.php',
             type: 'POST',
             data: {
                 'action': 'loadRuas',
@@ -71,7 +59,7 @@ window.addEventListener('DOMContentLoaded', event => {
     function loadCasas(ruaID, index) {
         var accordionBody = $("#collapse" + index + " .accordion-body");
         $.ajax({
-            url: '../model/home.php',
+            url: 'model/home.php',
             type: 'POST',
             data: {
                 'action': 'loadCasas',
@@ -111,7 +99,7 @@ window.addEventListener('DOMContentLoaded', event => {
         let numeroCasa = $("#inputNumero").val();
 
         $.ajax({
-            url: '../model/home.php',
+            url: 'model/home.php',
             type: 'POST',
             data: {
                 'action': 'registrarCasa',
@@ -135,7 +123,7 @@ window.addEventListener('DOMContentLoaded', event => {
         let territorioID = $(this).attr('value-id-territorio');
         let numeroCasaID = $(this).attr('value-id-territorio-rua-casa');
         $.ajax({
-            url: '../model/home.php',
+            url: 'model/home.php',
             type: 'POST',
             data: {
                 'action': 'excluirCasa',
