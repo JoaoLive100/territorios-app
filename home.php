@@ -11,7 +11,7 @@
 </nav>
 <section class="page-section" id="territorios">
     <div class="px-4 px-lg-5">
-        <h2>Selecione o Território</h2>
+        <h2>Selecione o Território Teste</h2>
     </div>
     <div class="px-4 px-lg-5" id="territorios-list">
     </div>
