@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', event => {
     })
 
     $("#territorios-list").on("click", ".numerador", function () {
-        $("#territorio-title").text("Território: " + $(this).attr('numero') + " (" + $(this).attr('nome') + ")");
+        $("#territorio-title").text($(this).attr('numero') + " (" + $(this).attr('nome') + ")");
         let territorioID = $(this).attr('value');
         $.ajax({
             url: 'model/home.php',

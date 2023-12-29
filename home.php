@@ -28,16 +28,19 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Adicionar nova casa ou comércio</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Nova Casa ou Comércio</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="inputNumero">Número da casa ou nome do comércio:</label>
-                            <input type="text" class="form-control" id="inputNumero" placeholder="Clique aqui!" required>
+                            <label for="inputNumero" class="pb-2">Número ou Nome:</label>
+                            <input type="text" class="form-control" id="inputNumero" placeholder="Escreva Aqui!" required>
                         </div>
                     </form>
+                    <div>
+                        <h5></h5>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
